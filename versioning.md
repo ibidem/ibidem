@@ -9,7 +9,7 @@ No-Version Rule
 ---------------
 
 Anything that doesn't meet minimum requirements and is not already on a version
-is considered Alpha (ie. 0.0). This does not change until the first version is
+is considered Alpha (ie. `0.0`). This does not change until the first version is
 created. Alpha's do not get versioned on hotfixes, bugfixes, etc. It's permanent
 0.0 until it becomes stable. Alpha's don't have any set branch naming 
 convention; there is usually no 0.0 branch.
@@ -20,7 +20,7 @@ Stable Release
 --------------
 
 Stable versions are released as branches. The branches have the name
-stable/vX.Y. Where X and Y can go up to any positive value; X >= 1, and 
+`stable/vX.Y`. Where X and Y can go up to any positive value; X >= 1, and 
 Y >= 0. The branches are also tagged apropriatly.
 
 For a module to be considered stable the following conditions need to be met:
@@ -36,18 +36,18 @@ Documentation needs to be available in a printable format. As long as a
 printable version of the documentation exists, anything else such as a website
 showing it being updated, etc is not important.
 
-When moving from the Alpha stage (non-stable/experimental) to the initial 
-version the number 1.0 is assigned, thus the stable/v1.0 branch is created 
-and the source is also tagged v1.0
+When moving from the Alpha stage to the initial version the number `1.0` is 
+assigned, thus the `stable/v1.0` branch is created and the source is also 
+tagged `v1.0`
 
-Revisions/Hotfixes are documented as v1.0r3 (version 1.0 revision 3). They do 
-not affect the branch name conventions, but do reflect in tag names.
+Revisions/Hotfixes are documented as `v1.0r3` ("version 1.0 revision 3"). They 
+do not affect the branch name conventions, but do reflect in tag names.
 
-If errors are found in a version, eg. stable/v1.0. Then a branch unstable/v1.0
-is created from said version and the stable/v1.0 is removed from the server. 
+If errors are found in a version, eg. `stable/v1.0`. Then a branch `unstable/v1.0`
+is created from said version and the `stable/v1.0` is removed from the server. 
 This may be ommited if a revision is rolled out in a timely manner. Where timely
 is considered 1 hour or less from the time the problem is noticed. When v1.0 
-becomes stable again stable/v1.0 is recreated and unstable/v1.0 is removed.
+becomes stable again `stable/v1.0` is recreated and `unstable/v1.0` is removed.
 
 If for whatever reason you need to get v1.0 consistently with out worrying about
 it being in stable or unstable state, you use the tags instead.
@@ -85,9 +85,9 @@ considered an edge case, because it is easily avoided, and the responsibility
 falls on the one updating.
 
 Sometimes the behaviour has to change and interoperability is simply not 
-possible, when this happens the X version is incremented and Y reset. So v1.3 
-will go to v1.4 regardless of how major the features are, but will go to 
-v2.0 regardless of how minor the change, if the change can't be moved to legacy.
+possible, when this happens the X version is incremented and Y reset. So `v1.3` 
+will go to `v1.4` regardless of how major the features are, but will go to 
+`v2.0` regardless of how minor the change, if the change can't be moved to legacy.
 
 Anyone who whishes to only use the current latest version of the code is free to
 simply ignore the legacy modules.
