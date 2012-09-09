@@ -102,6 +102,22 @@ refactor the code to support the latest changes and subsequently remove the
 legacy modules (again) should they wish to run only the latest iterations on
 features.
 
+Other branches
+--------------
+
+The `master` branch always contains the current latest stable version of the 
+code. During alpha stage this is not guranteed, as there is no stable version of
+the code.
+
+Any development happens on `wip/*` branches. These can be anything from 
+`wip/refactoring-interfaces` to full blown versions, ie. `wip/v1.4`. The 
+`wip/*` branches only exist on the server (if they ever even get pushed at all) 
+while they are worked on. When they are merged to version branch or becomes a 
+stable branch they are deleted.
+
+All `wip/*` branches start from `master`. And should get updated periodically
+from `master`.
+
 Release Schedule
 ----------------
 
