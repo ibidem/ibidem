@@ -129,6 +129,3 @@ basis.
 
 That being said, quick releases and small changes are prefered over monolithic 
 ones, since they give the most benefit overall.
-
-If you wish for a 6 month cycle just come by every 6 months, and you have your
-6 month cycle.
