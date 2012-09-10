@@ -21,7 +21,7 @@ Stable Release
 
 Stable versions are released as branches. The branches have the name
 `stable/vX.Y`. Where X and Y can go up to any positive value; X >= 1, and 
-Y >= 0. The branches are also tagged apropriatly.
+Y >= 0. The branches are also tagged apropriatly (eg. `v1.4`).
 
 For a module to be considered stable the following conditions need to be met:
 
