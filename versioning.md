@@ -79,10 +79,18 @@ as possible (re-inventing names, duplicating api, etc not being a problem), eg.
 it's prefered to create a replacement for a Cache class and call it Stash then
 to break the existing Cache class (as an example).
 
-There is only one exception. Because classes are inevatably moved, they're 
-namespace changes, so updating classes that extend explicitly a class is 
-considered an edge case, because it is easily avoided, and the responsibility 
-falls on the one updating.
+There is only one exception. Because classes are inevatably moved, namespace 
+changes occur, so updating classes that extend explicitly a class is 
+considered an edge case, because it is easily avoided, and easily fixed via a 
+crude find and replace. The responsibility for maintaining these falls on the 
+one updating. You can avoid these cases entirely by simply using a different 
+class name when possible, so lets say there was a class `FormField`, you could
+extend the framework `FormField` into your namespace's `FormField`, but if you 
+just want to borrow functionality rather then actually transparently inject
+your changes into the rest of the framework it's better to just call your class
+something else like `SmartFormField` and extend `\app\FormField` which which 
+will autoresolve to the correct namespace when and if `FormField` is deprecated
+and moved to legacy.
 
 Sometimes the behaviour has to change and interoperability is simply not 
 possible, when this happens the X version is incremented and Y reset. So `v1.3` 
