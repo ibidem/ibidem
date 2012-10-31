@@ -91,9 +91,9 @@ your changes into the rest of the framework it's better to just call your class
 something else like `SmartFormField` and extend `\app\FormField` which which 
 will autoresolve to the correct namespace when and if `FormField` is deprecated
 and moved to legacy. Another way is to use groups. So given our form field 
-example instead of extending \mjolnir\html\FormField you extend 
-\mjolnir\FormField this will resolve to the same class but when FormField is
-moved to legacy it will transparently resolve to \mjolnir\legacy\FormField
+example instead of extending `\mjolnir\html\FormField` you extend 
+`\mjolnir\FormField` this will resolve to the same class but when FormField is
+moved to legacy it will transparently resolve to `\mjolnir\legacy\FormField`
 instead. Groups are the recomended way of extending framework classes.
 
 Sometimes the behaviour has to change and interoperability is simply not 
