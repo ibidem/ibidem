@@ -84,18 +84,23 @@ changes occur, so updating classes that extend explicitly a class is
 considered an edge case, because it is easily avoided, and easily fixed via a 
 crude find and replace. The responsibility for maintaining these falls on the 
 one updating. You can avoid these cases entirely by simply using a different 
-class name when possible, so lets say there was a class `FormField`, you could
-extend the framework `FormField` into your namespace's `FormField`, but if you 
-just want to borrow functionality rather then actually transparently inject
+class name when possible, so lets say there was a class `FormField` class, you 
+could extend the framework `FormField` into your namespace's `FormField`, but 
+if you just want to borrow functionality rather then actually transparently inject
 your changes into the rest of the framework it's better to just call your class
 something else like `SmartFormField` and extend `\app\FormField` which which 
 will autoresolve to the correct namespace when and if `FormField` is deprecated
-and moved to legacy.
+and moved to legacy. Another way is to use groups. So given our form field 
+example instead of extending \mjolnir\html\FormField you extend 
+\mjolnir\FormField this will resolve to the same class but when FormField is
+moved to legacy it will transparently resolve to \mjolnir\legacy\FormField
+instead. Groups are the recomended way of extending framework classes.
 
 Sometimes the behaviour has to change and interoperability is simply not 
 possible, when this happens the X version is incremented and Y reset. So `v1.3` 
-will go to `v1.4` regardless of how major the features are, but will go to 
-`v2.0` regardless of how minor the change, if the change can't be moved to legacy.
+will go to `v1.4` regardless of how major the features are if compatibility can
+be maintained, but will go to `v2.0` regardless of how minor the change, if the
+change isn't compatible with legacy.
 
 Anyone who whishes to only use the current latest version of the code is free to
 simply ignore the legacy modules.
