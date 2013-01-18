@@ -3,7 +3,8 @@ Versioning
 
 The following describes the versioning conventions. 
 
-In short: Versioning is strict and technical. No exceptions.
+tldr: Versioning is strict and technical (no exceptions). Versions catolog 
+completeness, and NOT stability, usability or milestones in development.
 
 No-Version Rule
 ---------------
@@ -14,14 +15,17 @@ created. Alpha's do not get versioned on hotfixes, bugfixes, etc. It's permanent
 0.0 until it becomes stable. Alpha's don't have any set branch naming 
 convention; there is usually no 0.0 branch.
 
-There is no beta, etc. The first version after the "alpha" state is stable/v1.0
+There is no beta, etc. The first version after the "alpha" state is either 
+liquid/v1.0 or stable/v1.0, though the code might change between various
+wip/v1.0 as well as revision and experimental branches (discussed bellow).
 
 Stable Release
 --------------
 
 Stable versions are released as branches. The branches have the name
 `stable/vX.Y`. Where X and Y can go up to any positive value; X >= 1, and 
-Y >= 0. The branches are also tagged apropriatly (eg. `v1.4`).
+Y >= 0. The branches are also tagged apropriatly (eg. `stable/v1.4` is tagged
+`v1.4`).
 
 For a module to be considered stable the following conditions need to be met:
 
@@ -32,6 +36,9 @@ For a module to be considered stable the following conditions need to be met:
  * all issues must be resolved, all feature requests answered
  * relationships with other modules must be accounted for
 
+To simplify the last requirement all repositories will jump version at once
+regardless of internal changes.
+
 Documentation needs to be available in a printable format. As long as a 
 printable version of the documentation exists, anything else such as a website
 showing it being updated, etc is not important.
@@ -41,7 +48,12 @@ assigned, thus the `stable/v1.0` branch is created and the source is also
 tagged `v1.0`
 
 Revisions/Hotfixes are documented as `v1.0r3` ("version 1.0 revision 3"). They 
-do not affect the branch name conventions, but do reflect in tag names.
+do not affect the branch name conventions, but do reflect in tag names. Note
+that in non-stable branches revisions have slightly different meaning. As an
+example, take `wip/v1.0`, revision `wip/v1.0r4` is not necesarily ahead of 
+`wip/v1.0r2` but merely represents a different set of changes. Extremely 
+unstable versions of such revisions use an `x` instead of an `r`, and are 
+read as "experimental" revisions.
 
 If errors are found in a version, eg. `stable/v1.0`. Then a branch `unstable/v1.0`
 is created from said version and the `stable/v1.0` is removed from the server. 
@@ -49,8 +61,9 @@ This may be ommited if a revision is rolled out in a timely manner. Where timely
 is considered 1 hour or less from the time the problem is noticed. When v1.0 
 becomes stable again `stable/v1.0` is recreated and `unstable/v1.0` is removed.
 
-If for whatever reason you need to get v1.0 consistently with out worrying about
-it being in stable or unstable state, you use the tags instead.
+If for whatever reason you need to get `v1.0` consistently with out worrying about
+it being in stable or unstable state, just make sure you are using the tags and
+not the branches.
 
 Even if all conditions are met, a version may be posponed. Reasons for 
 postponing a version may include practical considerations such as using it more 
@@ -70,7 +83,7 @@ works, the version number is incremented by the following rules:
  * X goes up by 1 and Y is reset, when backporting is not feasible
 
 Backporting is not feasible when a change causes an irrecoverable invalidation
-of past behaviour; how major it is is irrelevant.
+of past behaviour; how major that change is, is irrelevant.
 
 The policy on any change to what is technically existing functionality is that
 all relevant behaviour tests are moved to the (designated) legacy module along
@@ -95,6 +108,11 @@ example instead of extending `\mjolnir\html\FormField` you extend
 `\mjolnir\FormField` which will resolve to the same class but when `FormField` 
 is moved to legacy it will transparently resolve to `\mjolnir\legacy\FormField`
 instead. Groups are the recomended way of extending framework classes.
+
+When extending miscellaneous modules you can use the `parent\` namespace ideom.
+Simply write `class A extends parent\A` (note: no `\` before parent) and the
+system will have A extend the first A in the module hirarchy that's bellow the
+current namespace. This method may not be appropriate for all cases.
 
 Sometimes the behaviour has to change and interoperability is simply not 
 possible, when this happens the X version is incremented and Y reset. So `v1.3` 
@@ -123,13 +141,7 @@ code. During alpha stage this is not guranteed, as there is no stable version of
 the code.
 
 Any development happens on `wip/*` branches. These can be anything from 
-`wip/refactoring-interfaces` to full blown versions, ie. `wip/v1.4`. The 
-`wip/*` branches only exist on the server (if they ever even get pushed at all) 
-while they are worked on. When they are merged to version branch or becomes a 
-stable branch they are deleted.
-
-All `wip/*` branches start from `master`. And should get updated periodically
-from `master`.
+`wip/refactoring-interfaces` to full blown versions, ie. `wip/v1.4`. 
 
 Release Schedule
 ----------------
@@ -138,7 +150,7 @@ It's ready when it's ready.
 
 This means a new version can come every hour or take an entire year. All 
 features are weighted and how and when is simply determined on a per feature
-basis.
+basis; or request.
 
 That being said, quick releases and small changes are prefered over monolithic 
 ones, since they give the most benefit overall.
