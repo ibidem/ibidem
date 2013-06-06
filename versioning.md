@@ -16,8 +16,8 @@ created. Alpha's do not get versioned on hotfixes, bugfixes, etc. It's permanent
 convention; there is usually no 0.0 branch.
 
 There is no beta, etc. The first version after the "alpha" state is either 
-liquid/v1.0 or stable/v1.0, though the code might change between various
-wip/v1.0 as well as revision and experimental branches (discussed bellow).
+liquid/v1.x or stable/v1.x, though the code might change between various
+wip/v1.x as well as revision and experimental branches (discussed bellow).
 
 Stable Release
 --------------
